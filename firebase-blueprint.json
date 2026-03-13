@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile and subscription data",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "niche": { "type": "string" },
+        "plan": { "type": "string", "enum": ["free", "premium"] },
+        "dailyUsageCount": { "type": "integer" },
+        "lastUsageDate": { "type": "string", "format": "date" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "plan"]
+    },
+    "SavedContent": {
+      "title": "SavedContent",
+      "description": "Content generated and saved by the user",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "type": { "type": "string", "enum": ["post", "video", "idea", "bio", "hashtag", "calendar"] },
+        "theme": { "type": "string" },
+        "content": { "type": "object" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "type", "content", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/saved_content/{contentId}": {
+      "schema": "SavedContent",
+      "description": "Saved generated content"
+    }
+  }
+}

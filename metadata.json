@@ -1,0 +1,7 @@
+{
+  "name": "SocialAI Creator",
+  "description": "AI-powered content generator for social media creators, entrepreneurs, and stores.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
